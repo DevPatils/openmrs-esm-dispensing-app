@@ -70,6 +70,22 @@ This will start the microfrontend at `http://localhost:8081/openmrs/spa`. Log in
 
 Note: All backend requests will be proxied to your local OpenMRS instance running on `http://localhost:8080/`.
 
+## 🐳 Docker Setup
+
+You can run the Dispensing App inside a Docker container instead of installing dependencies locally.
+
+### 1. Build the Docker image
+```sh
+docker build -t openmrs-dispensing-app .
+docker run -p 8081:8080 openmrs-dispensing-app
+docker run -p 8081:8080 \
+  -e BACKEND_URL="http://host.docker.internal:8080" \
+  openmrs-dispensing-app
+
+Access the web app
+http://localhost:8081/openmrs/spa/dispensing
+
+
 ## Troubleshooting
 
 If you run into errors with running the code, and see errors in the console related to having not enough file watchers on Linux, these instructions help: [React Native error: enospc system limit for number of file watchers reached](https://stackoverflow.com/questions/55763428/react-native-error-enospc-system-limit-for-number-of-file-watchers-reached).
